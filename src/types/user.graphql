@@ -1,0 +1,58 @@
+enum Gender {
+    UNKNOWN
+    MALE
+    FEMALE
+}
+
+type Users {
+    users: [User!]
+}
+
+type User {
+    id: Int!
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    gender: Gender
+}
+
+union UserResult = User | Users
+
+input UserInput {
+    id: Int
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    gender: Gender
+}
+
+input CreateUserInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    gender: Gender!
+}
+
+input UpdateUserInput {
+    id: Int!
+    firstName: String
+    lastName: String
+    password: String
+    gender: Gender
+}
+
+type Query {
+    users: [User!]
+    user(id: ID!): User
+}
+
+type Mutation {
+    createUser(input: CreateUserInput): User
+}
+
+type Subscription {
+    userCreated: User
+}
