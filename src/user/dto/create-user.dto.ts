@@ -1,5 +1,5 @@
 import { Min } from '@nestjs/class-validator'
-import { CreateUserInput } from "../../graphql.schema";
+import { CreateUserInput } from "./create-user.input";
 
 export class CreateUserDto extends CreateUserInput {
     @Min(1)
